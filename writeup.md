@@ -38,6 +38,8 @@ The goals / steps of this project are the following:
 #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Advanced-Lane-Lines/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
 
 You're reading it!
+The `main_program.py` is running all the pipeline on calibration images and test files.
+For creating the video output i used the `run_on_video.ipynb` with jupyter notebook.
 
 ### Camera Calibration
 
