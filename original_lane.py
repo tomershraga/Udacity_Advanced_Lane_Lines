@@ -23,6 +23,5 @@ def original_lane_lines(warp_img, undistorted_line_image, x_line_values, MatrInv
     return original_lane_image
 
 def show_original_lane_image(original_lane_image):
-    cv2.putText(original_lane_image, "curvature", (100,100), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), cv2.LINE_4)
     plt.imshow(cv2.cvtColor(original_lane_image, cv2.COLOR_BGR2RGB))
     plt.show()

@@ -14,7 +14,7 @@ if __name__ == "__main__":
     images = glob.glob('camera_cal/calibration*.jpg')
     mtx, dist = camera_calibration.camera_calib(images)
 # 2. read an example frame and apply undistort function
-    road_image = cv2.imread('test_images/straight_lines2.jpg')
+    road_image = cv2.imread('test_images/test5.jpg')
     undist_img = undistort.undistort_image(road_image, mtx, dist)
     #undistort.show_undistorted_and_distorted_images(road_image, undist_img)
 # 3. Use color transforms, gradients, etc., to create a thresholded binary image
@@ -34,9 +34,12 @@ if __name__ == "__main__":
     # plt.imshow(result)
     # plt.show()
 # 8. Calculates the curvature of polynomial functions in meters
-    print(curvature_and_offset.measure_curvature_pixels(ploty, left_fit, right_fit))
+    left_curverad, right_curverad = curvature_and_offset.measure_curvature_pixels(ploty, left_fit, right_fit)
+    print(left_curverad)
+    print(right_curverad)
 # 9. Calculate position of the car from the centre
-    print(curvature_and_offset.offset((left_fit, right_fit), road_image))
+    offset = curvature_and_offset.offset((left_fit, right_fit), road_image)
+    print(offset)
     plt.imshow(cv2.cvtColor(transformed_perspective_image, cv2.COLOR_BGR2RGB))
     plt.show()
 # 10. Combine original image with area of lane
