@@ -125,3 +125,15 @@ Here's a [link to my video result](./project_video_output.mp4)
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
 I had a problem with creating the out_img in search_around_poly function. It tooks me long time to understand that the input image was wrong i gave the original image instead the transformed perspective image.
+
+Where will my pipeline likely fail?
+* If i will need to change the threshold binary min and max values because of color changes in the video it will be a problem.
+* Pipeline for detecting lane should be in real time so maybe python is not the best language to use. C++ can make better work.
+* If the camera will be on gimbal the pipeline won't work well. 
+
+What could you do to make it more robust? 
+* Not using only computer vision, deep learning can give a better solution.
+* If the camera will be on gimbal i will need to consider the 3-dof (yaw, pitch, roll) of the camera gimbal in all the calculation.
+* Using fusion between more then a camera will give better solution (for example: stereo camera, lidar, radar)
+ 
+

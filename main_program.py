@@ -43,6 +43,7 @@ if __name__ == "__main__":
     plt.imshow(cv2.cvtColor(transformed_perspective_image, cv2.COLOR_BGR2RGB))
     plt.show()
 # 10. Combine original image with area of lane
-    original_lane_image = original_lane.original_lane_lines(transformed_perspective_image, undist_img, (left_fitx, right_fitx), Minv)
+    original_lane_image = original_lane.original_lane_lines(transformed_perspective_image, undist_img, (left_fitx, right_fitx), Minv,
+                                                            left_curverad, right_curverad, offset)
     original_lane.show_original_lane_image(original_lane_image)
     print('FINISHED')

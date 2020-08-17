@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 
-def original_lane_lines(warp_img, undistorted_line_image, x_line_values, MatrInv):
+def original_lane_lines(warp_img, undistorted_line_image, x_line_values, MatrInv, left_curverad, right_curverad, offset):
     # Create an image to draw the lines on
     warp_zero = np.zeros_like(warp_img).astype(np.uint8)
     color_warp = np.dstack((warp_zero, warp_zero, warp_zero))
@@ -20,6 +20,10 @@ def original_lane_lines(warp_img, undistorted_line_image, x_line_values, MatrInv
     new_warped_image = cv2.warpPerspective(color_warp, MatrInv, (warp_img.shape[1], warp_img.shape[0]))
     # Combine the result with the original image
     original_lane_image = cv2.addWeighted(undistorted_line_image, 1, new_warped_image, 0.3, 0)
+    cv2.putText(original_lane_image, "radius of curvature: (L): " + str(round(left_curverad,3)) + " m (R): " + str(round(right_curverad,3)) + " m",
+                (20,40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+    cv2.putText(original_lane_image, "offset from center: " + str(round(offset, 3)) + " m",
+                (20, 80), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
     return original_lane_image
 
 def show_original_lane_image(original_lane_image):
